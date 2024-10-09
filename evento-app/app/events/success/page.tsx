@@ -2,9 +2,9 @@
 
 import { useSearchParams } from 'next/navigation'
 import Confetti from 'react-confetti'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 
-export default function SuccessPage() {
+function Success() {
     const searchParams = useSearchParams()
     const eventName = searchParams.get('eventName')
     const eventId = searchParams.get('eventId')
@@ -37,5 +37,14 @@ export default function SuccessPage() {
                 </a>
             </div>
         </div>
+    )
+}
+
+
+export default function SuccessPage() {
+    return (
+        <Suspense>
+            <Success />
+        </Suspense>
     )
 }
